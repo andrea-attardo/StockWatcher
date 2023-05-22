@@ -57,6 +57,15 @@ public class StockWatcher implements EntryPoint {
       }
     });
 
+    // Listen for keyboard events in the input box.
+    newSymbolTextBox.addKeyDownHandler(new KeyDownHandler() {
+      public void onKeyDown(KeyDownEvent event) {
+        if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+          addStock();
+        }
+      }
+    });
+
    }
     /**
     * Add stock to FlexTable. Executed when the user clicks the addStockButton or
@@ -85,16 +94,9 @@ public class StockWatcher implements EntryPoint {
       return;
     }
   } 
-    /* 
-    // Listen for keyboard events in the input box.
-    newSymbolTextBox.addKeyDownHandler(new KeyDownHandler() {
-      public void onKeyDown(KeyDownEvent event) {
-        if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-          addStock();
-        }
-      }
-    });
-    */
+    
+    
+    
 
 
     
