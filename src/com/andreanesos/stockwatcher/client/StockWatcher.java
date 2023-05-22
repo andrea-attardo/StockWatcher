@@ -1,6 +1,8 @@
 package com.andreanesos.stockwatcher.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -72,17 +74,17 @@ public class StockWatcher implements EntryPoint {
     
     
     
-    private void addStock() {
-      final String symbol = newSymbolTextBox.getText().toUpperCase().trim();
-      newSymbolTextBox.setFocus(true);
+  private void addStock() {
+    final String symbol = newSymbolTextBox.getText().toUpperCase().trim();
+    newSymbolTextBox.setFocus(true);
 
-      // Stock code must be between 1 and 10 chars that are numbers, letters, or dots.
-      if (!symbol.matches("^[0-9A-Z\\.]{1,10}$")) {
-        Window.alert("'" + symbol + "' is not a valid symbol.");
-        newSymbolTextBox.selectAll();
-        return;
-      }
-    } 
+    // Stock code must be between 1 and 10 chars that are numbers, letters, or dots.
+    if (!symbol.matches("^[0-9A-Z\\.]{1,10}$")) {
+      Window.alert("'" + symbol + "' is not a valid symbol.");
+      newSymbolTextBox.selectAll();
+      return;
+    }
+  } 
     /* 
     // Listen for keyboard events in the input box.
     newSymbolTextBox.addKeyDownHandler(new KeyDownHandler() {
@@ -101,6 +103,6 @@ public class StockWatcher implements EntryPoint {
 
 
 
-  }
-  
 }
+  
+
