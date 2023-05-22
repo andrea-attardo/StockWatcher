@@ -15,7 +15,7 @@ import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.user.client.Window;
 import java.util.ArrayList;
-
+import com.google.gwt.user.client.Timer;
 
 
 
@@ -31,7 +31,8 @@ public class StockWatcher implements EntryPoint {
   private Label lastUpdatedLabel = new Label();
   private ArrayList<String> stocks = new ArrayList<String>();
 
-
+  private static final int REFRESH_INTERVAL = 5000; // ms
+  private VerticalPanel mainPanel = new VerticalPanel();
 
 
 
@@ -60,6 +61,16 @@ public class StockWatcher implements EntryPoint {
     // TODO Move cursor focus to the input box.
     newSymbolTextBox.setFocus(true);
 
+    // Setup timer to refresh list automatically.
+    Timer refreshTimer = new Timer() {
+      @Override
+      public void run() {
+        refreshWatchList();
+      }
+    };
+    refreshTimer.scheduleRepeating(REFRESH_INTERVAL);
+
+
     //Listen for the mouse events on the Add button
     addStockButton.addClickHandler(new ClickHandler() {
       public void onClick(ClickEvent event) {
@@ -75,6 +86,14 @@ public class StockWatcher implements EntryPoint {
         }
       }
     });
+
+
+
+
+
+
+
+
 
    }
     
@@ -95,13 +114,19 @@ public class StockWatcher implements EntryPoint {
     // TODO Don't add the stock if it's already in the table.
     if (stocks.contains(symbol))
       return;
+
     // TODO Add the stock to the table
     int row = stocksFlexTable.getRowCount();
     stocks.add(symbol);
     stocksFlexTable.setText(row, 0, symbol);
+    
     // TODO Add a button to remove this stock from the table.
     Button removeStockButton = new Button("x");
     removeStockButton.addClickHandler(new ClickHandler() {
+     
+     
+     
+     
       public void onClick(ClickEvent event) {
         int removedIndex = stocks.indexOf(symbol);
         stocks.remove(removedIndex);
