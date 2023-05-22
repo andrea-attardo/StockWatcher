@@ -55,10 +55,23 @@ public class StockWatcher implements EntryPoint {
       }
     });
 
+   }
     /**
     * Add stock to FlexTable. Executed when the user clicks the addStockButton or
     * presses enter in the newSymbolTextBox.
     */
+    
+
+      //newSymbolTextBox.setText("");
+
+      // TODO Don't add the stock if it's already in the table.
+      // TODO Add the stock to the table
+      // TODO Add a button to remove this stock from the table.
+      // TODO Get the stock price.
+    
+    
+    
+    
     private void addStock() {
       final String symbol = newSymbolTextBox.getText().toUpperCase().trim();
       newSymbolTextBox.setFocus(true);
@@ -69,22 +82,8 @@ public class StockWatcher implements EntryPoint {
         newSymbolTextBox.selectAll();
         return;
       }
-
-      newSymbolTextBox.setText("");
-
-      // TODO Don't add the stock if it's already in the table.
-      // TODO Add the stock to the table
-      // TODO Add a button to remove this stock from the table.
-      // TODO Get the stock price.
-    }
-    
-    // Listen for mouse events on the Add button.
-    addStockButton.addClickHandler(new ClickHandler() {
-      public void onClick(ClickEvent event) {
-        addStock();
-      }
-    });
-    
+    } 
+    /* 
     // Listen for keyboard events in the input box.
     newSymbolTextBox.addKeyDownHandler(new KeyDownHandler() {
       public void onKeyDown(KeyDownEvent event) {
@@ -93,6 +92,7 @@ public class StockWatcher implements EntryPoint {
         }
       }
     });
+    */
 
 
     
