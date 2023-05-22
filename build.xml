@@ -12,8 +12,8 @@
   
   
   
-  <!--   <property name="gwt.sdk" location=<"C:/personale/programming/packages/gwt-2.10.0" >/>               -->
-  <property name="gwt.sdk" location=<"C:\Users\cefi\gwt-2.10.0" >/>
+  <!--   <property name="gwt.sdk" location="C:/personale/programming/packages/gwt-2.10.0" />               -->
+  <property name="gwt.sdk" location="C:\Users\cefi\gwt-2.10.0" />
 
 
 
