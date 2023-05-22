@@ -67,32 +67,25 @@ public class StockWatcher implements EntryPoint {
     });
 
    }
-    /**
-    * Add stock to FlexTable. Executed when the user clicks the addStockButton or
-    * presses enter in the newSymbolTextBox.
-    */
     
+    
+  private void addStock() {
+    final String symbol = newSymbolTextBox.getText().toUpperCase().trim();
+      newSymbolTextBox.setFocus(true);
 
-      //newSymbolTextBox.setText("");
+      // Stock code must be between 1 and 10 chars that are numbers, letters, or dots.
+      if (!symbol.matches("^[0-9A-Z\\.]{1,10}$")) {
+        Window.alert("'" + symbol + "' is not a valid symbol.");
+        newSymbolTextBox.selectAll();
+        return;
+      }
+
+      newSymbolTextBox.setText("");
 
       // TODO Don't add the stock if it's already in the table.
       // TODO Add the stock to the table
       // TODO Add a button to remove this stock from the table.
       // TODO Get the stock price.
-    
-    
-    
-    
-  private void addStock() {
-    final String symbol = newSymbolTextBox.getText().toUpperCase().trim();
-    newSymbolTextBox.setFocus(true);
-
-    // Stock code must be between 1 and 10 chars that are numbers, letters, or dots.
-    if (!symbol.matches("^[0-9A-Z\\.]{1,10}$")) {
-      Window.alert("'" + symbol + "' is not a valid symbol.");
-      newSymbolTextBox.selectAll();
-      return;
-    }
   } 
     
     
