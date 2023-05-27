@@ -13,6 +13,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyDownHandler;
+import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.user.client.Window;
 import java.util.ArrayList;
 import com.google.gwt.user.client.Timer;
@@ -139,7 +140,7 @@ public class StockWatcher implements EntryPoint {
     
    private void refreshWatchList() {
         // TODO Auto-generated method stub
-        inal double MAX_PRICE = 100.0; // $100.00
+        final double MAX_PRICE = 100.0; // $100.00
         final double MAX_PRICE_CHANGE = 0.02; // +/- 2%
    
         StockPrice[] prices = new StockPrice[stocks.size()];
@@ -155,7 +156,33 @@ public class StockWatcher implements EntryPoint {
     }  
 
 
-    
+    private void updateTable(StockPrice[] prices) {
+      // TODO Auto-generated method stub
+      for (int i = 0; i < prices.length; i++) {
+        updateTable(prices[i]);
+      }
+    }
+
+    private void updateTable(StockPrice price) {
+      // Make sure the stock is still in the stock table.
+      if (!stocks.contains(price.getSymbol())) {
+        return;
+      }
+ 
+      int row = stocks.indexOf(price.getSymbol()) + 1;
+ 
+      // Format the data in the Price and Change fields.
+      String priceText = NumberFormat.getFormat("#,##0.00").format(
+          price.getPrice());
+      NumberFormat changeFormat = NumberFormat.getFormat("+#,##0.00;-#,##0.00");
+      String changeText = changeFormat.format(price.getChange());
+      String changePercentText = changeFormat.format(price.getChangePercent());
+ 
+      // Populate the Price and Change fields with new data.
+      stocksFlexTable.setText(row, 1, priceText);
+      stocksFlexTable.setText(row, 2, changeText + " (" + changePercentText
+          + "%)");
+     }
 
 
 
