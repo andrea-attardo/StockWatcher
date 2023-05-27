@@ -137,7 +137,10 @@ public class StockWatcher implements EntryPoint {
   } 
     
     
-    
+   private void refreshWatchList() {
+        // TODO Auto-generated method stub
+
+    }  
 
 
     
