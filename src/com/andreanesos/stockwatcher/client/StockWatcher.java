@@ -17,6 +17,8 @@ import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.user.client.Window;
 import java.util.ArrayList;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.i18n.client.DateTimeFormat;
+import java.util.Date;
 
 
 
@@ -151,6 +153,7 @@ public class StockWatcher implements EntryPoint {
    
           prices[i] = new StockPrice(stocks.get(i), price, change);
         }
+
    
         updateTable(prices);
     }  
@@ -161,6 +164,15 @@ public class StockWatcher implements EntryPoint {
       for (int i = 0; i < prices.length; i++) {
         updateTable(prices[i]);
       }
+
+
+      // Display timestamp showing last refresh.
+      DateTimeFormat dateFormat = DateTimeFormat.getFormat(
+      DateTimeFormat.PredefinedFormat.DATE_TIME_MEDIUM);
+      lastUpdatedLabel.setText("Last update : " 
+        + dateFormat.format(new Date()));
+
+
     }
 
     private void updateTable(StockPrice price) {
