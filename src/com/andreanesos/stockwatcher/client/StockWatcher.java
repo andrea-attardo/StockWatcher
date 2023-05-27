@@ -32,7 +32,7 @@ public class StockWatcher implements EntryPoint {
   private ArrayList<String> stocks = new ArrayList<String>();
 
   private static final int REFRESH_INTERVAL = 5000; // ms
-  private VerticalPanel mainPanel = new VerticalPanel();
+
 
 
 
@@ -60,7 +60,7 @@ public class StockWatcher implements EntryPoint {
     
     // TODO Move cursor focus to the input box.
     newSymbolTextBox.setFocus(true);
-
+    
     // Setup timer to refresh list automatically.
     Timer refreshTimer = new Timer() {
       @Override
@@ -69,7 +69,7 @@ public class StockWatcher implements EntryPoint {
       }
     };
     refreshTimer.scheduleRepeating(REFRESH_INTERVAL);
-
+    
 
     //Listen for the mouse events on the Add button
     addStockButton.addClickHandler(new ClickHandler() {
@@ -123,15 +123,13 @@ public class StockWatcher implements EntryPoint {
     // TODO Add a button to remove this stock from the table.
     Button removeStockButton = new Button("x");
     removeStockButton.addClickHandler(new ClickHandler() {
-     
-     
-     
-     
+
       public void onClick(ClickEvent event) {
         int removedIndex = stocks.indexOf(symbol);
         stocks.remove(removedIndex);
         stocksFlexTable.removeRow(removedIndex + 1);
       }
+
     });
     stocksFlexTable.setWidget(row, 3, removeStockButton);
 
